@@ -68,27 +68,32 @@ docker run -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
 *Expliquer cette ligne de commande (y compris les options utilisées)*
 
 ```bash
-*Rép :* Cette ligne de commande Docker est utilisée pour lancer un conteneur PostgreSQL avec certaines options spécifiques telles que :
+Rép : Cette ligne de commande Docker est utilisée pour lancer un conteneur PostgreSQL avec certaines options spécifiques telles que :
 
-*- 'it' :* Ces options permettent de démarrer le conteneur en mode interactif avec le conteneur et de contrôler les entrées et les sorties via le terminal.
+- 'it' : Ces options permettent de démarrer le conteneur en mode interactif avec le conteneur et de contrôler les entrées et les sorties via le terminal.
 
-*- 'e POSTGRES_PASSWORD=password' :* Cette option définit une variable d'environnement pour spécifier le mot de passe de l'utilisateur dans la base PostgreSQL qui sera créée.
+- 'e POSTGRES_PASSWORD=password' : Cette option définit une variable d'environnement pour spécifier le mot de passe de l'utilisateur dans la base PostgreSQL qui sera créée.
 
-*- 'p 5432:5432' :* Cette option permet de mapper le port du conteneur PostgreSQL.
+- 'p 5432:5432' : Cette option permet de mapper le port du conteneur PostgreSQL.
 Cela permet d'accéder à la base de données PostgreSQL depuis l'extérieur du conteneur en utilisant le port 5432 de l'hôte local.
 
-*- 'postgres' :* Il s'agit de l'image Docker à utiliser pour créer le conteneur.
+- 'postgres' : Il s'agit de l'image Docker à utiliser pour créer le conteneur.
 ```
 
 
 * Compléter le code manquant dans la méthode `TodoListController.createTodoItem()`
-    Dans cette partie il manquait la creation d'un nouvel élément de tâche (TodoItem):
-		this.todoItemRepository.save(new TodoItem(todoItem.getId(),todoItem.getTime(), todoItem.getContent()));
+
+*Rép :* Dans cette partie, il manquait la creation d'un nouvel élément de tâche (TodoItem) :
+
+		*this.todoItemRepository.save(new TodoItem(todoItem.getId(),todoItem.getTime(), todoItem.getContent()));*
 
 *Pourquoi `todoItemRepository` est-il `null` ? Quelle est la meilleure façon de l'injecter ?*
-TodoItemRepository est "null" du fait qu'il n'ya pas de mécanismes d'injection de dependances qui est configuré pour la classe TodolistController qui depend de todoItemRepository.
+
+*Rép :* *TodoItemRepository* est "null" du fait qu'il n'y a pas de mécanismes d'injection de dependances qui est configuré pour la classe *TodolistController* qui depend de *TodoItemRepository*.
+
 * Modifier le code en conséquence.
-Pour celà il faut ajouter l'annotation @Autowired sur le constructeur de TodoListController.
+
+*Rép :* Pour celà il faut ajouter l'annotation *@Autowired* sur le constructeur de *TodoListController*.
 
 * Tester vos endpoints avec un client REST.
 
@@ -129,6 +134,7 @@ Source : http://leanpub.com/get-your-hands-dirty-on-clean-architecture[Tom Hombe
 
 *Rappeler en quelques lignes les grands principes de l'architecture hexagonale.*
 
+```bash
 L'architecture hexagonale, également connue sous le nom de Clean Architecture, est une approche de conception logicielle qui vise à séparer les préoccupations de manière claire et à rendre le code plus modulaire, évolutif et testable. Voici quelques-uns de ses grands principes :
 
 Séparation des préoccupations : L'architecture hexagonale divise le système en différentes couches, notamment les couches d'application, de domaine et d'infrastructure. Chaque couche a sa propre responsabilité et dépend uniquement des couches intérieures.
@@ -138,6 +144,7 @@ Cœur du système : Le cœur du système est le domaine métier, représenté pa
 Ports et adaptateurs : Les ports sont des interfaces définissant les interactions avec le système. Les adaptateurs sont des implémentations concrètes de ces ports qui permettent au système de communiquer avec l'extérieur, comme les interfaces utilisateur, les bases de données, etc.
 
 Dépendances externes : Les dépendances externes sont encapsulées derrière des interfaces, ce qui permet de les substituer facilement pour les tests unitaires et de rendre le système indépendant des détails de l'implémentation.
+```
 
 Compléter ce code avec une fonctionnalité de création de `TodoItem`  persisté en base et appelé depuis un endpoint REST `POST /todos` qui :
 
@@ -146,6 +153,8 @@ Compléter ce code avec une fonctionnalité de création de `TodoItem`  persist�
 
 La fonctionnalité à implémenter est contractualisée par le port d'entrée `AddTodoItem`.
 
+*Rép :* Voir le code source.
+
 ### Exercice 3 - Ecriture de tests
 _Temps estimé : 20 mins_
 
@@ -153,8 +162,14 @@ _Temps estimé : 20 mins_
 
 * Implémenter (en junit) des TU portant sur la règle de gestion qui consiste à afficher `[LATE!]` dans la description d'un item en retard de plus de 24h.
 
-*Quels types de tests devra-t-on écrire pour les adaptateurs ?* Pour les adaptateurs, il faudra penser à ecrire des Tests d'intégration, Tests de validation des requêtes,Tests de validation des réponses pour que l'adaptateur puisse fonctionner correctement.
-Tests de performance, Tests de sécurité, Tests de gestion des erreurs
+*Rép :* Voir le code source.
+
+*Quels types de tests devra-t-on écrire pour les adaptateurs ?* 
+
+*Rép :* 
+Pour les adaptateurs, il faudra penser à ecrire des *Tests d'intégration*, *Tests de validation des requêtes*, *Tests de validation des réponses* pour que l'adaptateur puisse fonctionner correctement.
+
+*Tests de performance*, *Tests de sécurité*, *Tests de gestion des erreurs*
 
 *S'il vous reste du temps, écrire quelques-uns de ces types de test.*
 
