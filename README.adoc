@@ -67,6 +67,7 @@ docker run -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
 ```
 *Expliquer cette ligne de commande (y compris les options utilisées)*
 
+```bash
 *Rép :* Cette ligne de commande Docker est utilisée pour lancer un conteneur PostgreSQL avec certaines options spécifiques telles que :
 
 *- 'it' :* Ces options permettent de démarrer le conteneur en mode interactif avec le conteneur et de contrôler les entrées et les sorties via le terminal.
@@ -77,6 +78,7 @@ docker run -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
 Cela permet d'accéder à la base de données PostgreSQL depuis l'extérieur du conteneur en utilisant le port 5432 de l'hôte local.
 
 *- 'postgres' :* Il s'agit de l'image Docker à utiliser pour créer le conteneur.
+```
 
 
 * Compléter le code manquant dans la méthode `TodoListController.createTodoItem()`
