@@ -117,6 +117,16 @@ Source : http://leanpub.com/get-your-hands-dirty-on-clean-architecture[Tom Hombe
 
 *Rappeler en quelques lignes les grands principes de l'architecture hexagonale.*
 
+L'architecture hexagonale, également connue sous le nom de Clean Architecture, est une approche de conception logicielle qui vise à séparer les préoccupations de manière claire et à rendre le code plus modulaire, évolutif et testable. Voici quelques-uns de ses grands principes :
+
+Séparation des préoccupations : L'architecture hexagonale divise le système en différentes couches, notamment les couches d'application, de domaine et d'infrastructure. Chaque couche a sa propre responsabilité et dépend uniquement des couches intérieures.
+
+Cœur du système : Le cœur du système est le domaine métier, représenté par la couche de domaine. Il contient les entités métier ainsi que la logique métier.
+
+Ports et adaptateurs : Les ports sont des interfaces définissant les interactions avec le système. Les adaptateurs sont des implémentations concrètes de ces ports qui permettent au système de communiquer avec l'extérieur, comme les interfaces utilisateur, les bases de données, etc.
+
+Dépendances externes : Les dépendances externes sont encapsulées derrière des interfaces, ce qui permet de les substituer facilement pour les tests unitaires et de rendre le système indépendant des détails de l'implémentation.
+
 Compléter ce code avec une fonctionnalité de création de `TodoItem`  persisté en base et appelé depuis un endpoint REST `POST /todos` qui :
 
 * prend un `TodoItem` au format JSON dans le body (voir exemple de contenu plus haut);
@@ -131,7 +141,8 @@ _Temps estimé : 20 mins_
 
 * Implémenter (en junit) des TU portant sur la règle de gestion qui consiste à afficher `[LATE!]` dans la description d'un item en retard de plus de 24h.
 
-*Quels types de tests devra-t-on écrire pour les adaptateurs ?* 
+*Quels types de tests devra-t-on écrire pour les adaptateurs ?* Pour les adaptateurs, il faudra penser à ecrire des Tests d'intégration, Tests de validation des requêtes,Tests de validation des réponses pour que l'adaptateur puisse fonctionner correctement.
+Tests de performance, Tests de sécurité, Tests de gestion des erreurs
 
 *S'il vous reste du temps, écrire quelques-uns de ces types de test.*
 
